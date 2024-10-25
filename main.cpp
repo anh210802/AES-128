@@ -3,12 +3,10 @@
 #include "aes.hpp"
 
 int main() {
-    FileReader file("input/input5.txt");  
-    if (!file.readFile()) {  
-        std::cerr << "Failed to read the file." << std::endl;
-        return 1;  
-    }
+    FileReader file("input/input6.txt"); // Thay doi ten file input
+    FileWriter writer("output/output6.txt"); // Thay doi ten file output
 
+    file.readFile();
     file.print();  
 
     std::string key = "Key-MaHoaAES-128";
@@ -22,8 +20,6 @@ int main() {
     std::cout << std::endl;
     // uint8_t key[] = {0x2b, 0x7e, 0x15, 0x16, 0x28, 0xae, 0xd2, 0xa6, 
     //                  0xab, 0xf7, 0x15, 0x88, 0x09, 0xcf, 0x4f, 0x3c};
-    
-    FileWriter writer("output/output5.txt"); 
 
     for (const auto& line : file.getLines()) {
         HandleData handledData(line);  
@@ -44,9 +40,6 @@ int main() {
             std::cout << "Data: " << std::endl;
             aes.printData();
             aes.setKey(keyHex.data());
-            // std::cout << "Key: " << std::endl;
-            // aes.printKey();
-            // std::cout << std::endl;
             aes.encrypt();
             std::cout << "Encrypted data: " << std::endl;
             aes.printData();
@@ -56,5 +49,5 @@ int main() {
         std::cout << std::endl;  
     }
 
-    return 0;  // End program
+    return 0;
 }
