@@ -1,16 +1,14 @@
 #include "aes.hpp"
 
 AES::AES() : roundKey(11, std::vector<uint8_t>(16, 0)), round(0) {
-    // Initialize data and key to zero
     std::fill(std::begin(data), std::end(data), 0);
     std::fill(std::begin(key), std::end(key), 0);
 }
 
 AES::AES(uint8_t * bytes) : roundKey(11, std::vector<uint8_t>(16, 0)), round(0) {
-    // Initialize data and key to zero
     std::fill(std::begin(data), std::end(data), 0);
     std::fill(std::begin(key), std::end(key), 0);
-    setData(bytes); // You can set data from the passed pointer
+    setData(bytes); 
 }
 
 void AES::setData(uint8_t * bytes) {
@@ -169,7 +167,7 @@ void AES::printKey() {
 
 void AES::printRoundKey(int round) {
     for (unsigned char byte : roundKey[round]) {
-        print(byte); // Print each byte in the vector
+        print(byte); 
     }
 }
 
@@ -262,16 +260,12 @@ uint8_t AES::sBox(uint8_t byte)
 void AES::shiftRows() {
     uint8_t tmp;
 
-    // row 0 is left unchanged
-
-    // row 1
     tmp = data[1];
     data[1] = data[5];
     data[5] = data[9];
     data[9] = data[13];
     data[13] = tmp;
 
-    // row 2
     tmp = data[2];
     data[2] = data[10];
     data[10] = tmp;
@@ -279,7 +273,6 @@ void AES::shiftRows() {
     data[6] = data[14];
     data[14] = tmp;
 
-    // row 3
     tmp = data[15];
     data[15] = data[11];
     data[11] = data[7];

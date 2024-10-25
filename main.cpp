@@ -3,8 +3,8 @@
 #include "aes.hpp"
 
 int main() {
-    FileReader file("input/input6.txt"); // Thay doi ten file input
-    FileWriter writer("output/output6.txt"); // Thay doi ten file output
+    FileReader file("input/input2.txt"); // Thay doi ten file input
+    FileWriter writer("output/output2.txt"); // Thay doi ten file output
 
     file.readFile();
     file.print();  

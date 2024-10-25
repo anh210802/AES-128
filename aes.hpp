@@ -5,8 +5,8 @@
 
 class AES {
 public:
-    AES(); // Declaration
-    AES(uint8_t *); // Declaration
+    AES(); 
+    AES(uint8_t *); 
 
     void print(uint8_t);
     void print(uint8_t *);
@@ -33,7 +33,6 @@ public:
     void setRoundKey(int, uint8_t *);
     void setRound(int);
 
-    // Encryption
     void keyAdd();
     void subBytes();
     void shiftRows();
@@ -44,9 +43,9 @@ public:
 
 private:
     int round;
-    uint8_t data[16];  // Use stack allocation instead of new
-    uint8_t key[16];   // Use stack allocation instead of new
-    std::vector<std::vector<uint8_t>> roundKey;  // Use vector instead of raw pointer
+    uint8_t data[16]; 
+    uint8_t key[16];   
+    std::vector<std::vector<uint8_t>> roundKey;  
 
     const uint16_t reduce = 0b100011011;
     const uint16_t mag = 0b100000000;

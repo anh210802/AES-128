@@ -6,7 +6,6 @@
 // FileReader Class
 FileReader::FileReader(const std::string& file) : fileName(file) {}
 
-// Reading the file
 bool FileReader::readFile() {
     std::ifstream file(fileName);
     if (!file.is_open()) {
@@ -23,7 +22,6 @@ bool FileReader::readFile() {
     return true;
 }
 
-// Print file content
 void FileReader::print() const {
     for (const auto& line : lines) {
         std::cout << line << std::endl;
@@ -39,7 +37,6 @@ std::vector<std::string> FileReader::getLines() const {
 // FileWriter Class
 FileWriter::FileWriter(const std::string& file) : fileName(file) {}
 
-// Writing data to a file
 bool FileWriter::writeFile(uint8_t * data) {
     std::ofstream file(fileName, std::ios::app);
     if (!file.is_open()) {
@@ -60,7 +57,6 @@ HandleData::HandleData(const std::string& data_input) {
     dataBlock = convertTo128BitBlock(data_input);
 }
 
-// Split input string into 16-byte chunks
 std::vector<std::string> HandleData::splitTo16ByteChunks(const std::string& string_input) const {
     std::vector<std::string> chunks;
     size_t length = string_input.size();
@@ -73,7 +69,6 @@ std::vector<std::string> HandleData::splitTo16ByteChunks(const std::string& stri
     return chunks;
 }
 
-// Convert string into 128-bit (16-byte) block
 std::vector<uint8_t> HandleData::convertTo128BitBlock(const std::string& data_input) const {
     std::vector<uint8_t> block(16, 0);
 
@@ -84,7 +79,6 @@ std::vector<uint8_t> HandleData::convertTo128BitBlock(const std::string& data_in
     return block;
 }
 
-// Print the 128-bit block in hexadecimal format
 void HandleData::printHex() const {
     std::cout << "128-bit block in hex: ";
     for (uint8_t byte : dataBlock) {
@@ -93,12 +87,11 @@ void HandleData::printHex() const {
     std::cout << std::endl;
 }
 
-// Return the data block as hexadecimal values
 std::vector<uint8_t> HandleData::getDataHex() const {
     std::vector<uint8_t> hexData;
 
     for (uint8_t byte : dataBlock) {
-        hexData.push_back(byte);  // Simply add the byte to the hexData vector
+        hexData.push_back(byte); 
     }
 
     return hexData;
